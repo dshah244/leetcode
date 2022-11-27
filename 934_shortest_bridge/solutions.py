@@ -6,6 +6,18 @@ class Solution:
     def shortestBridge(self, grid: list[list[int]]) -> int:
         ...
 
+    def _find_islands(self) -> list[list[list[int]]]:
+        islands = []
+        for row, one_row in enumerate(self._grid):
+            for col, one_point in enumerate(one_row):
+                if [row, col] not in self._reduce_dimension(
+                    islands
+                ) and one_point == 1:
+                    points_island = []
+                    _ = self._find_island([[row, col]], points_island)
+                    islands.append(points_island)
+        return islands
+
     def _reduce_dimension(self, vector: list[list[list[int]]]):
         reduced = []
         for one_ele in vector:
@@ -20,7 +32,6 @@ class Solution:
                 print(
                     f"Known land: [{row}, {col}] is already part of island ..."
                 )
-                pass
             elif self._grid[row][col] == 0:
                 print(f"Found water at [{row}, {col}] ...")
             else:
@@ -44,24 +55,16 @@ class Solution:
         ]
 
     def _neighbour_west(self, row: int, col: int) -> list[int]:
-        if col == 0:
-            return []
-        return [row, col - 1]
+        return [] if col == 0 else [row, col - 1]
 
     def _neighbour_north(self, row: int, col: int) -> list[int]:
-        if row == 0:
-            return []
-        return [row - 1, col]
+        return [] if row == 0 else [row - 1, col]
 
     def _neighbour_east(self, row: int, col: int) -> list[int]:
-        if col == self._grid_size - 1:
-            return []
-        return [row, col + 1]
+        return [] if col == self._grid_size - 1 else [row, col + 1]
 
     def _neighbour_south(self, row: int, col: int) -> list[int]:
-        if row == self._grid_size - 1:
-            return []
-        return [row + 1, col]
+        return [] if row == self._grid_size - 1 else [row + 1, col]
 
-    def distance(point_a: list[int], point_b: list[int]) -> int:
+    def distance(self, point_a: list[int], point_b: list[int]) -> int:
         return abs(sum(point_a) - sum(point_b))

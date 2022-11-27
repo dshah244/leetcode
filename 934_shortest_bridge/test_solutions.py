@@ -31,9 +31,19 @@ def test_find_island(sample_grid: Solution):
 
 
 def test_reduce_dim(sample_grid: Solution):
+    """Validate that list[list[list[int]]] can be converted into list[list[int]]."""
     vector = [
         [[1, 1], [2, 2], [3, 3]],
         [[4, 4], [5, 5], [6, 6]],
     ]
     reduced = sample_grid._reduce_dimension(vector)
     assert reduced == [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6]]
+
+
+def test_islands(sample_grid: Solution):
+    """Validate that islands are found."""
+    islands = sample_grid._find_islands()
+    assert islands == [
+        [[0, 0], [0, 1], [0, 2], [1, 1], [1, 0]],
+        [[3, 2], [4, 2], [4, 1], [4, 3]],
+    ]
