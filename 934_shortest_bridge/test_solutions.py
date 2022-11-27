@@ -28,3 +28,12 @@ def test_find_island(sample_grid: Solution):
     found_island = sample_grid._find_island([[0, 1]], points_island)
     assert len(points_island) == 5
     assert points_island == [[0, 1], [0, 0], [1, 0], [1, 1], [0, 2]]
+
+
+def test_reduce_dim(sample_grid: Solution):
+    vector = [
+        [[1, 1], [2, 2], [3, 3]],
+        [[4, 4], [5, 5], [6, 6]],
+    ]
+    reduced = sample_grid._reduce_dimension(vector)
+    assert reduced == [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6]]

@@ -6,6 +6,12 @@ class Solution:
     def shortestBridge(self, grid: list[list[int]]) -> int:
         ...
 
+    def _reduce_dimension(self, vector: list[list[list[int]]]):
+        reduced = []
+        for one_ele in vector:
+            reduced += one_ele
+        return reduced
+
     def _find_island(
         self, list_points: list[list[int]], points_island: list[list[int]]
     ) -> bool:
