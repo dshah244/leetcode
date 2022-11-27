@@ -1,12 +1,29 @@
 class Solution:
     def __init__(self, grid: list[list[int]]):
         self._grid_size = len(grid)
-
-    def shortestBridge(self, grid: list[list[int]]) -> int:
         self._grid = grid
 
-    def _find_island(list_points: list[list[int]]) -> list[list[int]]:
+    def shortestBridge(self, grid: list[list[int]]) -> int:
         ...
+
+    def _find_island(
+        self, list_points: list[list[int]], points_island: list[list[int]]
+    ) -> bool:
+        for row, col in list_points:
+            if [row, col] in points_island:
+                print(
+                    f"Known land: [{row}, {col}] is already part of island ..."
+                )
+                pass
+            elif self._grid[row][col] == 0:
+                print(f"Found water at [{row}, {col}] ...")
+            else:
+                print(f"Unknown land at [{row}, {col}]...")
+                points_island.append([row, col])
+                neighbours = self._neighbours(row, col)
+                print(f"Neighbours: {neighbours} ...")
+                self._find_island(neighbours, points_island)
+        return True
 
     def _neighbours(self, row: int, col: int) -> list[list[int]]:
         return [
