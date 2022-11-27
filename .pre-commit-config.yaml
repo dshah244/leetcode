@@ -2,19 +2,25 @@ repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.3.0
     hooks:
-    -   id: check-ast
     -   id: check-toml
     -   id: check-yaml
-    -   id: debug-statements
     -   id: end-of-file-fixer
     -   id: mixed-line-ending
     -   id: requirements-txt-fixer
     -   id: trailing-whitespace
+- repo: local
+  hooks:
+    - id: pylint
+      name: pylint
+      entry: pylint
+      language: system
+      types: [python]
+- repo: https://github.com/pycqa/isort
+  rev: 5.10.1
+  hooks:
+    - id: isort
+repos:
 -   repo: https://github.com/psf/black
-    rev: "22.10.0"
+    rev: stable
     hooks:
-    -   id: black
--   repo: https://github.com/PyCQA/isort
-    rev: "5.10.1"
-    hooks:
-    -   id: isort
+    - id: black
