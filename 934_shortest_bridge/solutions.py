@@ -16,6 +16,7 @@ class Solution:
                     ) for coast2_row, coast2_col in coastlines[-1]
                 ]
             )
+        import pdb; pdb.set_trace()
         return min(distance) - 1
 
     def _find_coastline(self, island: list[list[int]]) -> list[list[int]]:
@@ -86,4 +87,4 @@ class Solution:
         return [] if row == self._grid_size - 1 else [row + 1, col]
 
     def _distance(self, point_a: list[int], point_b: list[int]) -> int:
-        return abs(sum(point_a) - sum(point_b))
+        return abs(point_a[0] - point_b[0] + point_a[1] - point_b[1])
