@@ -30,7 +30,7 @@ def test_find_island(sample_grid: Solution):
     assert points_island == [[0, 1], [0, 0], [1, 0], [1, 1], [0, 2]]
 
 
-def test_reduce_dim(sample_grid: Solution):
+def test_list_all_land_points(sample_grid: Solution):
     """Validate that list[list[list[int]]] can be converted into list[list[int]]."""
     vector = [
         [[1, 1], [2, 2], [3, 3]],
@@ -49,9 +49,9 @@ def test_islands(sample_grid: Solution):
     ]
 
 
-def test_find_coast(sample_grid: Solution):
+def test_find_coastline(sample_grid: Solution):
     """Validate that coasts of an island are found correctly."""
-    coast = sample_grid._find_coast([[3, 2], [4, 2], [4, 1], [4, 3]])
+    coast = sample_grid._find_coastline([[3, 2], [4, 2], [4, 1], [4, 3]])
     assert coast == [[3, 2], [4, 1], [4, 3]]
 
 
