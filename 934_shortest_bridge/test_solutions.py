@@ -53,3 +53,9 @@ def test_find_coast(sample_grid: Solution):
     """Validate that coasts of an island are found correctly."""
     coast = sample_grid._find_coast([[3, 2], [4, 2], [4, 1], [4, 3]])
     assert coast == [[3, 2], [4, 1], [4, 3]]
+
+
+def test_shortest_bridge(sample_grid: Solution):
+    """Validate that shortest distance required to connect a bridge is correct."""
+    distance = sample_grid.shortestBridge()
+    assert distance == 2

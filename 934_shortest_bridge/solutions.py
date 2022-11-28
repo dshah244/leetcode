@@ -3,8 +3,20 @@ class Solution:
         self._grid_size = len(grid)
         self._grid = grid
 
-    def shortestBridge(self, grid: list[list[int]]) -> int:
-        ...
+    def shortestBridge(self) -> int:
+        islands = self._find_islands()
+        coastlines = [self._find_coastline(island) for island in islands]
+        distance = []
+        for coast1_row, coast1_col in coastlines[0]:
+            distance.extend(
+                [
+                    self._distance(
+                        [coast1_row, coast1_col],
+                        [coast2_row, coast2_col]
+                    ) for coast2_row, coast2_col in coastlines[-1]
+                ]
+            )
+        return min(distance) - 1
 
     def _find_coastline(self, island: list[list[int]]) -> list[list[int]]:
         return [
@@ -73,5 +85,5 @@ class Solution:
     def _neighbour_south(self, row: int, col: int) -> list[int]:
         return [] if row == self._grid_size - 1 else [row + 1, col]
 
-    def distance(self, point_a: list[int], point_b: list[int]) -> int:
+    def _distance(self, point_a: list[int], point_b: list[int]) -> int:
         return abs(sum(point_a) - sum(point_b))
