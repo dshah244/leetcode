@@ -16,7 +16,6 @@ class Solution:
                     ) for coast2_row, coast2_col in coastlines[-1]
                 ]
             )
-        import pdb; pdb.set_trace()
         return min(distance) - 1
 
     def _find_coastline(self, island: list[list[int]]) -> list[list[int]]:
@@ -49,16 +48,10 @@ class Solution:
     ) -> bool:
         for row, col in list_points:
             if [row, col] in points_island:
-                print(
-                    f"Known land: [{row}, {col}] is already part of island ..."
-                )
-            elif self._grid[row][col] == 0:
-                print(f"Found water at [{row}, {col}] ...")
-            else:
-                print(f"Unknown land at [{row}, {col}]...")
+                pass
+            elif self._grid[row][col] != 0:
                 points_island.append([row, col])
                 neighbours = self._neighbours(row, col)
-                print(f"Neighbours: {neighbours} ...")
                 self._find_island(neighbours, points_island)
         return True
 
