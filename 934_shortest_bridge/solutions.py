@@ -87,4 +87,4 @@ class Solution:
         return [] if row == self._grid_size - 1 else [row + 1, col]
 
     def _distance(self, point_a: list[int], point_b: list[int]) -> int:
-        return abs(point_a[0] - point_b[0] + point_a[1] - point_b[1])
+        return abs(point_a[0] - point_b[0]) + abs(point_a[1] - point_b[1])
