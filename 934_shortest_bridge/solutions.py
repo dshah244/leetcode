@@ -10,7 +10,7 @@ class Solution:
         islands = []
         for row, one_row in enumerate(self._grid):
             for col, one_point in enumerate(one_row):
-                if [row, col] not in self._reduce_dimension(
+                if [row, col] not in self._list_all_land_points(
                     islands
                 ) and one_point == 1:
                     points_island = []
@@ -18,7 +18,7 @@ class Solution:
                     islands.append(points_island)
         return islands
 
-    def _reduce_dimension(self, vector: list[list[list[int]]]):
+    def _list_all_land_points(self, vector: list[list[list[int]]]):
         reduced = []
         for one_ele in vector:
             reduced += one_ele
