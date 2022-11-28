@@ -47,3 +47,9 @@ def test_islands(sample_grid: Solution):
         [[0, 0], [0, 1], [0, 2], [1, 1], [1, 0]],
         [[3, 2], [4, 2], [4, 1], [4, 3]],
     ]
+
+
+def test_find_coast(sample_grid: Solution):
+    """Validate that coasts of an island are found correctly."""
+    coast = sample_grid._find_coast([[3, 2], [4, 2], [4, 1], [4, 3]])
+    assert coast == [[3, 2], [4, 1], [4, 3]]

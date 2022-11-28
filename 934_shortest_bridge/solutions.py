@@ -6,6 +6,13 @@ class Solution:
     def shortestBridge(self, grid: list[list[int]]) -> int:
         ...
 
+    def _find_coastline(self, island: list[list[int]]) -> list[list[int]]:
+        return [
+            [row, col] for row, col in island if 0 in [
+                self._grid[row][col] for row, col in self._neighbours(row, col)
+            ]
+        ]
+
     def _find_islands(self) -> list[list[list[int]]]:
         islands = []
         for row, one_row in enumerate(self._grid):
