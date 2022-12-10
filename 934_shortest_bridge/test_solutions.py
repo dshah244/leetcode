@@ -1,3 +1,5 @@
+import timeit
+
 import pytest
 from solutions import Solution
 
@@ -59,3 +61,21 @@ def test_shortest_bridge(sample_grid: Solution):
     """Validate that shortest distance required to connect a bridge is correct."""
     distance = sample_grid.shortestBridge()
     assert distance == 2
+
+
+def test_timeit():
+    """Output time it takes to calculate shortest-bridge length."""
+    
+    time_string = """\
+from solutions import Solution
+grid = [
+    [1, 1, 1, 0, 0],
+    [1, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 1, 1, 1, 0],
+]
+Solution(grid).shortestBridge()
+    """.strip()
+    print(timeit.timeit(time_string))
+    
